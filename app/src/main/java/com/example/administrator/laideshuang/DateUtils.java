@@ -174,7 +174,7 @@ public class DateUtils {
      * "yyyy年MM月dd日HH时mm分ss秒"
      */
     public static String getCurrentTime1() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
+        SimpleDateFormat formatter = new SimpleDateFormat("yy年MM月dd日HH时mm分ss秒");
         return formatter.format(new Date());
     }
 
@@ -198,7 +198,7 @@ public class DateUtils {
      * "yyyy年MM月dd日HH时mm分ss秒"
      */
     public static String getCurrentTime4() {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
         return formatter.format(new Date());
     }
 

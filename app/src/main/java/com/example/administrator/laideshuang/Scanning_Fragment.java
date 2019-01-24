@@ -140,7 +140,7 @@ public class Scanning_Fragment extends Fragment {
                     String string = list.get(i).getWaibuNumber().substring(2, 5);
                     intiXunFei(string);
                 }
-                scanningNumberTv.setText(datas.size()+"");
+                scanningNumberTv.setText(datas.size() + "");
                 chongfuDialog.dismiss();
                 break;
 
@@ -245,13 +245,14 @@ public class Scanning_Fragment extends Fragment {
         switch (view.getId()) {
             case R.id.scanning_btn:
                 if (datas.size() != 0) {
-                    String time = DateUtils.getCurrentTime3();
-                    if (time.equals(SPUtils.get(getActivity(), "time", ""))) {
-                        exportExcel(time);
-                    } else {
-                        SPUtils.remove(getActivity(), "fileName");
-                        exportExcel(time);
-                    }
+//                    String time = DateUtils.getCurrentTime3();
+//                    if (time.equals(SPUtils.get(getActivity(), "time", ""))) {
+//                        exportExcel(time);
+//                    } else {
+//                        SPUtils.remove(getActivity(), "fileName");
+//                        exportExcel(time);
+//                    }
+                    exportExcel(DateUtils.getCurrentTime1());
                     datas.clear();
                     lRecyclerViewAdapter.notifyDataSetChanged();
                 } else {
@@ -275,14 +276,16 @@ public class Scanning_Fragment extends Fragment {
     public void exportExcel(String excelName) {
         file = new File(getSDPath() + "/Record");
         makeDir(file);
-        String fileName = (String) SPUtils.get(getActivity(), "fileName", "");
-        if (fileName.equals("")) {
-            String excelFile = file.toString() + "/" + excelName + ".xls";
-            ExcelUtils.initExcels(getRecordData(), excelFile, title, excelName, getActivity());
-//            ExcelUtils.writeObjListToExcels(getRecordData(), fileName, excelName,  getActivity());
-        } else {
-            ExcelUtils.writeObjListToExcels(getRecordData(), fileName, excelName, getActivity());
-        }
+//        String fileName = (String) SPUtils.get(getActivity(), "fileName", "");
+//        if (fileName.equals("")) {
+//            String excelFile = file.toString() + "/" + excelName + ".xls";
+//            ExcelUtils.initExcels(getRecordData(), excelFile, title, excelName, getActivity());
+////            ExcelUtils.writeObjListToExcels(getRecordData(), fileName, excelName,  getActivity());
+//        } else {
+//            ExcelUtils.writeObjListToExcels(getRecordData(), fileName, excelName, getActivity());
+//        }
+        ExcelUtils.initExcel(file.toString() + "/" + excelName + ".xls", title);
+        ExcelUtils.writeObjListToExcel(getRecordData(), file.toString() + "/" + excelName + ".xls", getActivity());
     }
 
     /**
